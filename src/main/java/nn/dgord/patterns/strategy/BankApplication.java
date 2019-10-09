@@ -14,19 +14,24 @@ import static nn.dgord.patterns.strategy.utils.Constants.USER_ID_FIRST;
 public class BankApplication {
     public static void main(String[] args) {
         // Scenario
+        User firstUser = User.builder().userInfo(UserInfo.builder()
+                .password("root")
+                .username("juggernaut123")
+                .balance(10000L)
+                .userId(USER_ID_FIRST)
+                .build()).build();
+
         Order order = new Order();
-        order.setOrderInfo(OrderInfo.builder()
+        OrderInfo orderInfo = OrderInfo.builder()
                 .caption("Apples")
-                .maintainer(User.builder().userInfo(UserInfo.builder()
-                        .password("root")
-                        .username("juggernaut123")
-                        .balance(10000L)
-                        .userId(USER_ID_FIRST)
-                        .build()).build())
+                .maintainer(firstUser)
                 .orderId(UUID.randomUUID())
                 .paymentStrategy(new CreditCardPaymentStrategy(new UserDataStorageImpl()))
                 .price(1000L)
-                .build());
+                .build();
+
+        order.setOrderInfo(orderInfo);
         order.performPayment();
+        firstUser.increaseBalance(1000L);
     }
 }
