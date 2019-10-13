@@ -7,11 +7,13 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import nn.dgord.patterns.strategy.domain.info.user.UserInfo;
 
+import java.io.Serializable;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User implements Serializable {
     private UserInfo userInfo;
 
     public void increaseBalance(Long balance) {

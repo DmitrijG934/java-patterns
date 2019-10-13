@@ -8,13 +8,14 @@ import lombok.NonNull;
 import nn.dgord.patterns.strategy.domain.User;
 import nn.dgord.patterns.strategy.strategy.PaymentStrategy;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderInfo {
+public class OrderInfo implements Serializable {
     @NonNull
     private UUID orderId;
     @NonNull

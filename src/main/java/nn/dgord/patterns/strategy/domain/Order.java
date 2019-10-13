@@ -8,10 +8,12 @@ import lombok.Setter;
 import nn.dgord.patterns.strategy.domain.info.order.OrderInfo;
 import nn.dgord.patterns.strategy.exception.PaymentException;
 
+import java.io.Serializable;
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
+public class Order implements Serializable {
     @Getter
     @Setter
     private OrderInfo orderInfo;
