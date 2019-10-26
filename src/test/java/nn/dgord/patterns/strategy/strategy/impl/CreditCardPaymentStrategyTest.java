@@ -1,15 +1,14 @@
 package nn.dgord.patterns.strategy.strategy.impl;
 
+import nn.dgord.patterns.strategy.BaseTest;
 import nn.dgord.patterns.strategy.domain.Order;
 import nn.dgord.patterns.strategy.domain.PaymentInfo;
 import nn.dgord.patterns.strategy.domain.User;
 import nn.dgord.patterns.strategy.domain.info.order.OrderInfo;
 import nn.dgord.patterns.strategy.domain.info.user.UserInfo;
-import nn.dgord.patterns.strategy.service.impl.BaseTest;
 import nn.dgord.patterns.strategy.service.impl.UserDataStorageImpl;
 import nn.dgord.patterns.strategy.strategy.PaymentStrategy;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -38,7 +37,6 @@ public class CreditCardPaymentStrategyTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void when_payPerforming_thenResultIsPaymentInfo() {
         final PaymentInfo expectedPaymentInfo = PaymentInfo.builder()
                 .isSucceed(true)

@@ -1,8 +1,8 @@
 package nn.dgord.patterns.strategy.domain;
 
+import nn.dgord.patterns.strategy.BaseTest;
 import nn.dgord.patterns.strategy.domain.info.order.OrderInfo;
 import nn.dgord.patterns.strategy.domain.info.user.UserInfo;
-import nn.dgord.patterns.strategy.service.impl.BaseTest;
 import nn.dgord.patterns.strategy.service.impl.UserDataStorageImpl;
 import nn.dgord.patterns.strategy.strategy.impl.CreditCardPaymentStrategy;
 import nn.dgord.patterns.strategy.strategy.impl.PaypalPaymentStrategy;

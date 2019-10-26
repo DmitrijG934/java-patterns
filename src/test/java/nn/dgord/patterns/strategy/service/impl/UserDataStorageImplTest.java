@@ -1,5 +1,6 @@
 package nn.dgord.patterns.strategy.service.impl;
 
+import nn.dgord.patterns.strategy.BaseTest;
 import nn.dgord.patterns.strategy.exception.UserNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
