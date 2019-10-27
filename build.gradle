@@ -1,5 +1,12 @@
 plugins {
     id 'java'
+    id "io.spring.dependency-management" version "1.0.7.RELEASE"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "io.projectreactor:reactor-bom:Bismuth-RELEASE"
+    }
 }
 
 group 'nn.dgord.patterns'
@@ -16,6 +23,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.10'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
     // testing
+    implementation 'io.projectreactor:reactor-core'
+    implementation 'io.projectreactor:reactor-test'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.23.4'
 }
