@@ -1,4 +1,4 @@
-package nn.dgord.patterns.reactor.service;
+package nn.dgord.patterns.reactor.service.calc;
 
 import reactor.core.publisher.Mono;
 

@@ -1,13 +1,14 @@
 package nn.dgord.patterns.reactor.service;
 
+import nn.dgord.patterns.reactor.service.calc.CommonCounterService;
 import org.junit.Before;
 import org.junit.Test;
 import reactor.test.StepVerifier;
 
-import static nn.dgord.patterns.reactor.service.CalcOperations.ADDITION;
-import static nn.dgord.patterns.reactor.service.CalcOperations.DIVISION;
-import static nn.dgord.patterns.reactor.service.CalcOperations.MULTIPLICATION;
-import static nn.dgord.patterns.reactor.service.CalcOperations.SUBTRACTION;
+import static nn.dgord.patterns.reactor.service.calc.CalcOperations.ADDITION;
+import static nn.dgord.patterns.reactor.service.calc.CalcOperations.DIVISION;
+import static nn.dgord.patterns.reactor.service.calc.CalcOperations.MULTIPLICATION;
+import static nn.dgord.patterns.reactor.service.calc.CalcOperations.SUBTRACTION;
 import static org.junit.Assert.assertNotNull;
 
 public class CommonCounterServiceTest {
