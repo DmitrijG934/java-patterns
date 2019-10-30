@@ -1,6 +1,6 @@
 package nn.dgord.patterns.strategy.strategy.impl;
 
-import nn.dgord.patterns.strategy.BaseTest;
+import nn.dgord.patterns.BaseTest;
 import nn.dgord.patterns.strategy.domain.Order;
 import nn.dgord.patterns.strategy.domain.PaymentInfo;
 import nn.dgord.patterns.strategy.domain.User;
