@@ -1,8 +1,8 @@
 package nn.dgord.patterns.observer.weatherdata.service;
 
 import nn.dgord.patterns.BaseTest;
+import nn.dgord.patterns.observer.weatherdata.domain.CommonWeatherData;
 import nn.dgord.patterns.observer.weatherdata.domain.ResponseData;
-import nn.dgord.patterns.observer.weatherdata.domain.WeatherData;
 import nn.dgord.patterns.observer.weatherdata.observer.CurrentWeatherDisplay;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -15,7 +15,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class WeatherDataServiceImplTest extends BaseTest {
+public class CommonWeatherDataServiceImplTest extends BaseTest {
     private WeatherDataServiceImpl serviceUnderTest;
 
     @Before
@@ -30,16 +30,16 @@ public class WeatherDataServiceImplTest extends BaseTest {
 
     @Test
     public void when_setUpdatedData_thenWeatherDataNotNull() {
-        WeatherData weatherData = WeatherData.builder()
+        CommonWeatherData commonWeatherData = CommonWeatherData.builder()
                 .temperature(1f)
                 .pressure(1f)
                 .humidity(1f)
                 .build();
-        ResponseData actual = serviceUnderTest.setUpdatedData(weatherData);
+        ResponseData actual = serviceUnderTest.setUpdatedData(commonWeatherData);
         assertEquals(UPDATE, actual.getOperationType());
         assertTrue(actual.isSucceed());
         assertNotNull(actual.getReceivedData());
-        assertNotNull(serviceUnderTest.getWeatherData());
+        assertNotNull(serviceUnderTest.getCommonWeatherData());
     }
 
     @Test

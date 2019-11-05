@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileReaderService implements ReaderService {
+public class FileBasedReaderService implements ReaderService {
     private static final String PATH = "D:\\IdeaProjects\\pattern-learn\\src\\main\\resources\\";
 
     @Override

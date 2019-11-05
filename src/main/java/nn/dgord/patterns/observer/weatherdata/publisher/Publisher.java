@@ -7,4 +7,5 @@ public interface Publisher {
     ResponseData registerObserver(Observer observer);
     ResponseData removeObserver(Observer observer);
     ResponseData notifyObservers();
+    ResponseData cleanAll();
 }

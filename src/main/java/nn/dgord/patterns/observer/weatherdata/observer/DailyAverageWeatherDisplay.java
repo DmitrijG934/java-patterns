@@ -1,6 +1,5 @@
 package nn.dgord.patterns.observer.weatherdata.observer;
 
-import lombok.Data;
 import nn.dgord.patterns.observer.weatherdata.display.Displayable;
 import nn.dgord.patterns.observer.weatherdata.domain.BaseData;
 import nn.dgord.patterns.observer.weatherdata.domain.CommonWeatherData;
@@ -8,11 +7,10 @@ import nn.dgord.patterns.observer.weatherdata.domain.ResponseData;
 import nn.dgord.patterns.observer.weatherdata.publisher.Publisher;
 import nn.dgord.patterns.observer.weatherdata.service.WeatherDataServiceImpl;
 
-@Data
-public class CurrentWeatherDisplay implements Observer, Displayable {
+public class DailyAverageWeatherDisplay implements Observer, Displayable {
     private CommonWeatherData commonWeatherData;
 
-    public CurrentWeatherDisplay(Publisher publisher) {
+    public DailyAverageWeatherDisplay(Publisher publisher) {
         if (publisher != null) {
             System.out.println(publisher.registerObserver(this));
         } else {
@@ -22,7 +20,7 @@ public class CurrentWeatherDisplay implements Observer, Displayable {
 
     @Override
     public String display() {
-        return String.format("======CURRENT WEATHER======\n" +
+        return String.format("======DAILY WEATHER======\n" +
                         "\tTemperature: %.2f\n\tHumidity: %.2f\n\tPressure: %.2f\n===========================\n",
                 commonWeatherData.getTemperature(), commonWeatherData.getHumidity(), commonWeatherData.getPressure()
         );
@@ -32,6 +30,11 @@ public class CurrentWeatherDisplay implements Observer, Displayable {
     public <T extends BaseData> ResponseData updateData(T data) {
         ResponseData.ResponseDataBuilder responseDataBuilder = ResponseData.builder();
         this.commonWeatherData = (CommonWeatherData) data;
+
+        commonWeatherData.setTemperature(commonWeatherData.getTemperature() / 2);
+        commonWeatherData.setHumidity(commonWeatherData.getHumidity() / 2);
+        commonWeatherData.setPressure(commonWeatherData.getPressure() / 2);
+
         responseDataBuilder.receivedData(data);
         responseDataBuilder.isSucceed(true);
         responseDataBuilder.operationType(WeatherDataServiceImpl.OperationType.UPDATE);

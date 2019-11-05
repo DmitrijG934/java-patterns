@@ -2,8 +2,8 @@ package nn.dgord.patterns.observer.weatherdata.service;
 
 import lombok.Getter;
 import nn.dgord.patterns.observer.weatherdata.domain.BaseData;
+import nn.dgord.patterns.observer.weatherdata.domain.CommonWeatherData;
 import nn.dgord.patterns.observer.weatherdata.domain.ResponseData;
-import nn.dgord.patterns.observer.weatherdata.domain.WeatherData;
 import nn.dgord.patterns.observer.weatherdata.observer.Observer;
 import nn.dgord.patterns.observer.weatherdata.publisher.Publisher;
 
@@ -18,7 +18,7 @@ import static nn.dgord.patterns.observer.weatherdata.service.WeatherDataServiceI
 public class WeatherDataServiceImpl implements WeatherDataService, Publisher {
     private static List<Observer> observers;
     @Getter
-    private WeatherData weatherData;
+    private CommonWeatherData commonWeatherData;
 
     public enum OperationType {
         REGISTER, REMOVE, UPDATE, NOTIFY
@@ -30,12 +30,22 @@ public class WeatherDataServiceImpl implements WeatherDataService, Publisher {
 
     @Override
     public <T extends BaseData> ResponseData setUpdatedData(T data) {
-        this.weatherData = (WeatherData) data;
+        this.commonWeatherData = (CommonWeatherData) data;
         return ResponseData.builder()
                 .isSucceed(true)
                 .operationType(UPDATE)
                 .receivedData(data)
                 .build();
+    }
+
+    @Override
+    public ResponseData cleanAll() {
+        ResponseData.ResponseDataBuilder builder = ResponseData.builder();
+        builder.operationType(REMOVE);
+        observers.clear();
+        builder.receivedData(observers);
+        builder.isSucceed(true);
+        return builder.build();
     }
 
     @Override
@@ -77,7 +87,7 @@ public class WeatherDataServiceImpl implements WeatherDataService, Publisher {
         StringBuilder sb = new StringBuilder();
         if (!observers.isEmpty()) {
             observers.forEach(o -> {
-                o.updateData(weatherData);
+                o.updateData(commonWeatherData);
                 responseDataBuilder.isSucceed(true);
                 sb.append(o);
             });
